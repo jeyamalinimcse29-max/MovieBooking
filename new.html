@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Me | Tamil Movie Ticket Booking | Premium Cinema Experience</title>
+  <!-- Materialize CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===================================================== */
+    /* GLOBAL STYLES AND RESETS - SECTION 1                 */
+    /* ===================================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', 'Roboto', sans-serif;
+      background-color: #0a0f1e;
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Custom scrollbar for dark theme */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1f2e;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #e50914;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff0a17;
+    }
+
+    /* ===================================================== */
+    /* DARK THEME COMPONENTS - SECTION 2                     */
+    /* ===================================================== */
+    .card, .card-panel, .modal, .sidenav, .carousel-item, .collection-item {
+      background-color: #141a2b !important;
+      color: #fff !important;
+    }
+
+    .btn, .btn-large, .btn-small, .btn-floating {
+      background-color: #e50914 !important;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+      transition: all 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .btn:hover, .btn-large:hover, .btn-small:hover, .btn-floating:hover {
+      background-color: #b2070f !important;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(229, 9, 20, 0.6);
+    }
+
+    .btn:active, .btn-large:active, .btn-small:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-outline {
+      background: transparent !important;
+      border: 2px solid #e50914 !important;
+      color: white !important;
+      box-shadow: none !important;
+    }
+
+    .btn-outline:hover {
+      background: #e50914 !important;
+      color: white !important;
+    }
+
+    /* ===================================================== */
+    /* FIXED HEADER WITH PROPER SPACING - SECTION 3          */
+    /* ===================================================== */
+    .navbar-fixed {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      background-color: #0a0f1e !important;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+      height: 80px;
+      line-height: 80px;
+      border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .nav-wrapper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .brand-logo {
+      font-size: 2.2rem !important;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #fff !important;
+      position: relative !important;
+      left: 0 !important;
+      transform: none !important;
+      display: flex;
+      align-items: center;
+      margin-right: 50px;
+      text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+      float: none !important;
+    }
+
+    .brand-logo span {
+      color: #e50914;
+      margin-left: 5px;
+      background: rgba(229, 9, 20, 0.1);
+      padding: 0 5px;
+      border-radius: 5px;
+    }
+
+    .nav-menu {
+      display: flex !important;
+      align-items: center !important;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu ul li {
+      list-style: none;
+      margin: 0 5px;
+    }
+
+    .nav-menu ul li a {
+      color: #fff !important;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+      line-height: 80px;
+    }
+
+    .nav-menu ul li a::before {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: #e50914;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+
+    .nav-menu ul li a:hover::before {
+      width: 60%;
+    }
+
+    .nav-menu ul li a:hover {
+      color: #e50914 !important;
+      transform: translateY(-2px);
+    }
+
+    .nav-menu ul li a.active {
+      color: #e50914 !important;
+    }
+
+    .nav-menu ul li a.active::before {
+      width: 60%;
+    }
+
+    /* Auth buttons in header */
+    .auth-nav {
+      display: flex;
+      gap: 15px;
+      margin-left: 30px;
+    }
+
+    .auth-btn {
+      background: transparent;
+      border: 2px solid #e50914;
+      color: white;
+      padding: 8px 25px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: normal;
+      height: 45px;
+      box-shadow: 0 4px 10px rgba(229, 9, 20, 0.2);
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-btn i {
+      font-size: 1.1rem;
+      margin-right: 5px;
+    }
+
+    .auth-btn:hover {
+      background: #e50914;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
+    }
+
+    .auth-btn:active {
+      transform: translateY(0);
+    }
+
+    .sidenav-trigger {
+      color: white !important;
+      line-height: 80px !important;
+      font-size: 1.5rem !important;
+    }
+
+    /* Mobile sidenav styling */
+    .sidenav {
+      background-color: #0a0f1e !important;
+      width: 280px;
+    }
+
+    .sidenav li a {
+      color: white !important;
+      font-size: 1rem;
+      padding: 0 30px;
+      line-height: 60px;
+      border-bottom: 1px solid rgba(229, 9, 20, 0.1);
+    }
+
+    .sidenav li a:hover {
+      background-color: rgba(229, 9, 20, 0.1) !important;
+      color: #e50914 !important;
+    }
+
+    .sidenav .auth-nav-mobile {
+      padding: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    /* ===================================================== */
+    /* SECTION TITLES WITH ANIMATION - SECTION 4             */
+    /* ===================================================== */
+    .section-title {
+      border-left: 6px solid #e50914;
+      padding-left: 25px;
+      margin: 50px 0 35px;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+      font-weight: 700;
+      letter-spacing: 1px;
+      position: relative;
+      animation: slideInLeft 0.8s ease;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 25px;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #e50914, transparent);
+      border-radius: 3px;
+    }
+
+    /* ===================================================== */
+    /* HERO SECTION WITH PARALLAX EFFECT - SECTION 5         */
+    /* ===================================================== */
+    .hero {
+      height: 90vh;
+      min-height: 700px;
+      background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1489599849928-6c8e8c7c4b9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      border-bottom: 3px solid #e50914;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      text-shadow: 0 0 30px #e50914, 2px 2px 4px rgba(0,0,0,0.5);
+      animation: glowPulse 3s infinite;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 20px #e50914, 0 0 40px rgba(229, 9, 20, 0.3); }
+      50% { text-shadow: 0 0 40px #e50914, 0 0 80px rgba(229, 9, 20, 0.6); }
+      100% { text-shadow: 0 0 20px #e50914, 0 0 40px rgba(229, 9, 20, 0.3); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h4 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 30px;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 1px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .hero-btn {
+      padding: 15px 45px !important;
+      font-size: 1.2rem !important;
+      height: 60px !important;
+      line-height: 60px !important;
+    }
+
+    /* ===================================================== */
+    /* FEATURED MOVIES CAROUSEL - SECTION 6                  */
+    /* ===================================================== */
+    .carousel-section {
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .carousel {
+      height: 450px !important;
+    }
+
+    .carousel .carousel-item {
+      width: 320px !important;
+      height: 420px !important;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(229, 9, 20, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .carousel .carousel-item:hover {
+      transform: scale(1.05) translateY(-10px);
+      box-shadow: 0 25px 50px rgba(229, 9, 20, 0.7);
+    }
+
+    .carousel-item img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .carousel-item .carousel-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.95));
+      padding: 20px;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-item:hover .carousel-info {
+      transform: translateY(0);
+    }
+
+    .carousel-info .rating-badge {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    /* ===================================================== */
+    /* MOVIE CARDS WITH FIXED BOOK BUTTONS - SECTION 7       */
+    /* ===================================================== */
+    .movie-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #141a2b !important;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid transparent;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 0 35px #e50914, 0 20px 40px rgba(0,0,0,0.8);
+      border: 1px solid #e50914;
+    }
+
+    .movie-card .card-image {
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .movie-card .card-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .movie-card:hover .card-image img {
+      transform: scale(1.1);
+    }
+
+    .card-title {
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      width: 100%;
+      padding: 25px 20px 15px !important;
+      font-size: 1.4rem !important;
+      font-weight: 700 !important;
+      margin: 0 !important;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .btn-floating.halfway-fab {
+      right: 20px;
+      top: -20px;
+      width: 50px !important;
+      height: 50px !important;
+      line-height: 50px !important;
+      background-color: #e50914 !important;
+      z-index: 10;
+    }
+
+    .btn-floating.halfway-fab i {
+      line-height: 50px !important;
+      font-size: 1.5rem;
+    }
+
+    .card-content {
+      padding: 20px !important;
+      flex: 1;
+    }
+
+    .rating-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .rating-badge {
+      background: #e50914;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-weight: 700;
+      display: inline-block;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
+    }
+
+    .language-chip {
+      background: #2a3350;
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .movie-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #b0b0b0;
+      margin: 10px 0;
+    }
+
+    .movie-meta i {
+      color: #e50914;
+      font-size: 1.2rem;
+    }
+
+    .movie-meta span {
+      font-size: 0.9rem;
+    }
+
+    .movie-description {
+      color: #ccc;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 10px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ===================================================== */
+    /* FIXED BOOK BUTTONS - LARGE AND PROPERLY SIZED         */
+    /* ===================================================== */
+    .card-action {
+      display: flex;
+      gap: 12px;
+      padding: 20px !important;
+      border-top: 1px solid rgba(255,255,255,0.1) !important;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .card-action .btn-small {
+      flex: 1;
+      padding: 0 8px !important;
+      height: 48px !important;
+      line-height: 48px !important;
+      font-size: 0.9rem !important;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 40px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-action .btn-small i {
+      font-size: 1.2rem;
+      margin-right: 5px;
+      line-height: 48px;
+    }
+
+    .trailer-btn {
+      background: transparent !important;
+      border: 2px solid #e50914 !important;
+      color: white !important;
+      box-shadow: none !important;
+    }
+
+    .trailer-btn:hover {
+      background: #e50914 !important;
+      color: white !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4) !important;
+    }
+
+    .book-btn {
+      background: #e50914 !important;
+      color: white !important;
+    }
+
+    .book-btn:hover {
+      background: #b2070f !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(229, 9, 20, 0.6) !important;
+    }
+
+    /* ===================================================== */
+    /* THEATER CARDS WITH IMAGES - SECTION 8                 */
+    /* ===================================================== */
+    .theater-card {
+      transition: all 0.4s ease;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #141a2b !important;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      height: 100%;
+      border: 1px solid transparent;
+    }
+
+    .theater-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 0 35px #e50914, 0 20px 40px rgba(0,0,0,0.8);
+      border: 1px solid #e50914;
+    }
+
+    .theater-card .card-image {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .theater-card .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .theater-card:hover .card-image img {
+      transform: scale(1.1);
+    }
+
+    .theater-card .card-content {
+      padding: 20px !important;
+    }
+
+    .theater-card .card-title {
+      position: relative;
+      background: none;
+      padding: 0 0 10px 0 !important;
+      font-size: 1.4rem !important;
+    }
+
+    .location-badge {
+      background: #2a3350;
+      color: #ffd700;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-top: 15px;
+      border: 1px solid #e50914;
+    }
+
+    .location-badge i {
+      font-size: 1rem;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    /* ===================================================== */
+    /* SEAT LAYOUT WITH GRID - SECTION 9                     */
+    /* ===================================================== */
+    .seat-layout-container {
+      background: #141a2b;
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .seat-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 8px;
+      margin: 25px 0;
+    }
+
+    .seat {
+      background: #2a3350;
+      border-radius: 10px 10px 0 0;
+      padding: 12px 3px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .seat.available:hover {
+      background: #3e4a6b;
+      transform: scale(1.05);
+      border-color: #e50914;
+      box-shadow: 0 0 15px #e50914;
+    }
+
+    .seat.selected {
+      background: #e50914 !important;
+      color: white;
+      box-shadow: 0 0 20px #e50914;
+      border-color: #fff;
+      transform: scale(1.05);
+    }
+
+    .seat.booked {
+      background: #1e2438 !important;
+      color: #666;
+      cursor: not-allowed;
+      opacity: 0.5;
+      border-color: #333;
+    }
+
+    .screen {
+      background: linear-gradient(to bottom, #e50914, #8b0000);
+      height: 70px;
+      width: 100%;
+      border-radius: 50% 50% 0 0;
+      margin-bottom: 30px;
+      text-align: center;
+      line-height: 70px;
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 5px;
+      box-shadow: 0 -10px 20px rgba(229, 9, 20, 0.3);
+    }
+
+    .seat-legend {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 50px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .legend-box {
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
+    }
+
+    .legend-box.available { background: #2a3350; }
+    .legend-box.selected { background: #e50914; }
+    .legend-box.booked { background: #1e2438; }
+
+    /* ===================================================== */
+    /* OFFER CARDS WITH GRADIENTS - SECTION 10               */
+    /* ===================================================== */
+    .offer-card {
+      background: linear-gradient(135deg, #1e2a3a, #0f1a2f);
+      border-left: 5px solid #e50914;
+      padding: 35px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.4s ease;
+      height: 100%;
+      text-align: center;
+      border: 1px solid rgba(229, 9, 20, 0.2);
+    }
+
+    .offer-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 50px #e50914;
+      border-color: #e50914;
+    }
+
+    .offer-card i {
+      font-size: 4rem !important;
+      margin-bottom: 20px;
+      color: #e50914;
+      text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    }
+
+    .offer-card h5 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .offer-card p {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* ===================================================== */
+    /* MOVIES AVAILABLE GALLERY - SECTION 11                 */
+    /* ===================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+      aspect-ratio: 2/3;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      border-color: #e50914;
+      box-shadow: 0 0 30px #e50914;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* ===================================================== */
+    /* CONTACT SECTION - SECTION 12                          */
+    /* ===================================================== */
+    .contact-section {
+      background: rgba(20, 26, 43, 0.8);
+      border-radius: 30px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(229, 9, 20, 0.2);
+    }
+
+    .contact-info {
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 20px;
+      height: 100%;
+    }
+
+    .contact-info h5 {
+      color: #e50914;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .contact-info p {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-info i {
+      color: #e50914;
+      font-size: 1.5rem;
+      width: 30px;
+    }
+
+    /* ===================================================== */
+    /* FOOTER SECTION - SECTION 13                           */
+    /* ===================================================== */
+    .page-footer {
+      background-color: #0a0f1e !important;
+      border-top: 3px solid #e50914;
+      margin-top: 70px;
+      padding-top: 50px !important;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .footer-title {
+      color: #e50914;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-text {
+      color: #aaa;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(229, 9, 20, 0.2);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: 1px solid #e50914;
+    }
+
+    .social-links a:hover {
+      background: #e50914;
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(229, 9, 20, 0.4);
+    }
+
+    .footer-links h5 {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links ul li a {
+      color: #aaa;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-links ul li a:hover {
+      color: #e50914;
+      padding-left: 8px;
+    }
+
+    .newsletter-input {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #e50914;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      box-shadow: 0 0 15px #e50914;
+    }
+
+    .footer-copyright {
+      background: rgba(0,0,0,0.3) !important;
+      padding: 20px 0 !important;
+      margin-top: 40px !important;
+    }
+
+    /* ===================================================== */
+    /* FIX FOR YOUTUBE MODALS - NO ERROR 153                 */
+    /* ===================================================== */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 20px 0;
+      background: #1e2438;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .modal .btn {
+      margin: 0 5px;
+    }
+
+    .modal-footer {
+      background: #1e2438 !important;
+      padding: 15px 25px !important;
+    }
+
+    /* ===================================================== */
+    /* RESPONSIVE DESIGN - SECTION 14                        */
+    /* ===================================================== */
+    @media only screen and (max-width: 1200px) {
+      .nav-wrapper {
+        padding: 0 30px;
+      }
+      
+      .brand-logo {
+        font-size: 2rem !important;
+      }
+      
+      .nav-menu ul li a {
+        padding: 0 12px;
+        font-size: 0.95rem;
+      }
+      
+      .hero h1 {
+        font-size: 4rem;
+      }
+    }
+
+    @media only screen and (max-width: 992px) {
+      nav {
+        height: 70px;
+        line-height: 70px;
+      }
+      
+      .nav-wrapper {
+        padding: 0 20px;
+      }
+      
+      .brand-logo {
+        font-size: 1.8rem !important;
+        margin-right: 0;
+      }
+      
+      .auth-nav {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .hero h4 {
+        font-size: 1.4rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      
+      .hero-btn {
+        width: 250px;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .card-action {
+        flex-direction: column;
+      }
+      
+      .card-action .btn-small {
+        width: 100%;
+      }
+      
+      .seat-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      
+      .seat-legend {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero h4 {
+        font-size: 1.1rem;
+      }
+      
+      .hero-btn {
+        width: 200px;
+        padding: 12px 30px !important;
+        font-size: 1rem !important;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+        padding-left: 15px;
+      }
+      
+      .carousel .carousel-item {
+        width: 250px !important;
+        height: 350px !important;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-content {
+        padding: 0 20px;
+      }
+      
+      .contact-section {
+        padding: 20px;
+      }
+    }
+
+    /* ===================================================== */
+    /* ANIMATIONS AND UTILITY CLASSES - SECTION 15           */
+    /* ===================================================== */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+
+    .glow-text {
+      text-shadow: 0 0 10px #e50914;
+    }
+
+    .mt-20 { margin-top: 20px; }
+    .mb-20 { margin-bottom: 20px; }
+    .mt-40 { margin-top: 40px; }
+    .mb-40 { margin-bottom: 40px; }
+    .p-20 { padding: 20px; }
+    .p-40 { padding: 40px; }
+
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 3px solid rgba(229,9,20,0.3);
+      border-radius: 50%;
+      border-top-color: #e50914;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================== -->
+<!-- FIXED HEADER SECTION - PROPER ALIGNMENT               -->
+<!-- ===================================================== -->
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#home" class="brand-logo">BOOK<span>ME</span></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      
+      <div class="nav-menu hide-on-med-and-down">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#now-showing">Now Showing</a></li>
+          <li><a href="#upcoming">Upcoming</a></li>
+          <li><a href="#theaters">Theaters</a></li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#book">Book Tickets</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+        <div class="auth-nav">
+          <button class="auth-btn" onclick="showStudentLogin()"><i class="material-icons">person</i>STUDENT</button>
+          <button class="auth-btn" onclick="showCoachLogin()"><i class="material-icons">coach</i>COACH</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- Mobile sidenav -->
+<ul class="sidenav" id="mobile-demo">
+  <li><a href="#home"><i class="material-icons">home</i> Home</a></li>
+  <li><a href="#now-showing"><i class="material-icons">movie</i> Now Showing</a></li>
+  <li><a href="#upcoming"><i class="material-icons">upcoming</i> Upcoming</a></li>
+  <li><a href="#theaters"><i class="material-icons">theaters</i> Theaters</a></li>
+  <li><a href="#offers"><i class="material-icons">local_offer</i> Offers</a></li>
+  <li><a href="#book"><i class="material-icons">confirmation_number</i> Book Tickets</a></li>
+  <li><a href="#contact"><i class="material-icons">contact_mail</i> Contact</a></li>
+  <li><div class="auth-nav-mobile">
+    <button class="auth-btn" style="width: 100%; margin-bottom: 10px;" onclick="showStudentLogin()"><i class="material-icons left">person</i>Student Login</button>
+    <button class="auth-btn" style="width: 100%;" onclick="showCoachLogin()"><i class="material-icons left">coach</i>Coach Login</button>
+  </div></li>
+</ul>
+
+<!-- ===================================================== -->
+<!-- HERO SECTION WITH PARALLAX EFFECT                      -->
+<!-- ===================================================== -->
+<section id="home" class="hero">
+  <div class="hero-content container">
+    <h1>Experience Tamil Cinema</h1>
+    <h4>4K Dolby Atmos | Luxury Recliners | Latest Tamil Movies</h4>
+    <div class="hero-buttons">
+      <a class="btn-large waves-effect waves-light red hero-btn" href="#book"><i class="material-icons left">confirmation_number</i>Book Tickets</a>
+      <a class="btn-large waves-effect waves-light grey darken-4 hero-btn" href="#featured"><i class="material-icons left">play_arrow</i>Watch Trailers</a>
+    </div>
+    <div class="mt-40">
+      <span class="rating-badge" style="margin: 0 5px;">⭐ 8.4 With Love</span>
+      <span class="rating-badge" style="margin: 0 5px;">⭐ 8.7 Kudumbasthan</span>
+      <span class="rating-badge" style="margin: 0 5px;">⭐ 9.1 Parasakthi</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- FEATURED MOVIES CAROUSEL SECTION                       -->
+<!-- ===================================================== -->
+<section id="featured" class="container carousel-section">
+  <h2 class="section-title">🔥 Featured Tamil Movies</h2>
+  <div class="carousel">
+    <!-- Slide 1 - With Love -->
+    <a class="carousel-item" href="#one!">
+      <img src="with%20love.webp" alt="With Love" onerror="this.src='https://via.placeholder.com/300x400?text=With+Love'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 8.4</span>
+        <h5 style="margin: 5px 0;">With Love</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Abishan, Anaswara</p>
+      </div>
+    </a>
+    <!-- Slide 2 - Kudumbasthan -->
+    <a class="carousel-item" href="#two!">
+      <img src="kk.webp" alt="Kudumbasthan" onerror="this.src='https://via.placeholder.com/300x400?text=Kudumbasthan'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 8.7</span>
+        <h5 style="margin: 5px 0;">Kudumbasthan</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Manikandan, Saanve</p>
+      </div>
+    </a>
+    <!-- Slide 3 - My Lord -->
+    <a class="carousel-item" href="#three!">
+      <img src="ml.webp" alt="My Lord" onerror="this.src='https://via.placeholder.com/300x400?text=My+Lord'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 8.2</span>
+        <h5 style="margin: 5px 0;">My Lord</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Spiritual Journey</p>
+      </div>
+    </a>
+    <!-- Slide 4 - Thunderbolts -->
+    <a class="carousel-item" href="#four!">
+      <img src="tb.jpg" alt="Thunderbolts" onerror="this.src='https://via.placeholder.com/300x400?text=Thunderbolts'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 8.9</span>
+        <h5 style="margin: 5px 0;">Thunderbolts</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Marvel's New Team</p>
+      </div>
+    </a>
+    <!-- Slide 5 - Parasakthi -->
+    <a class="carousel-item" href="#five!">
+      <img src="ps.webp" alt="Parasakthi" onerror="this.src='https://via.placeholder.com/300x400?text=Parasakthi'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 9.1</span>
+        <h5 style="margin: 5px 0;">Parasakthi</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Classic Reimagined</p>
+      </div>
+    </a>
+    <!-- Slide 6 - Hotspot 2 Much -->
+    <a class="carousel-item" href="#six!">
+      <img src="hot.webp" alt="Hotspot 2 Much" onerror="this.src='https://via.placeholder.com/300x400?text=Hotspot+2+Much'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 8.3</span>
+        <h5 style="margin: 5px 0;">Hotspot 2 Much</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Action Thriller</p>
+      </div>
+    </a>
+    <!-- Slide 7 - Bison -->
+    <a class="carousel-item" href="#seven!">
+      <img src="bi.webp" alt="Bison" onerror="this.src='https://via.placeholder.com/300x400?text=Bison'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 8.6</span>
+        <h5 style="margin: 5px 0;">Bison</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Man vs Nature</p>
+      </div>
+    </a>
+    <!-- Slide 8 - Meiyazhagan -->
+    <a class="carousel-item" href="#eight!">
+      <img src="my.webp" alt="Meiyazhagan" onerror="this.src='https://via.placeholder.com/300x400?text=Meiyazhagan'">
+      <div class="carousel-info">
+        <span class="rating-badge">⭐ 8.8</span>
+        <h5 style="margin: 5px 0;">Meiyazhagan</h5>
+        <p style="margin: 0; font-size: 0.9rem;">Epic Drama</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- NOW SHOWING MOVIE GRID WITH FIXED BOOK BUTTONS         -->
+<!-- ===================================================== -->
+<section id="now-showing" class="container">
+  <h2 class="section-title">🎟️ Now Showing</h2>
+  <div class="row">
+    <!-- Card 1 - With Love -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="with%20love.webp" alt="With Love" onerror="this.src='https://via.placeholder.com/300x400?text=With+Love'">
+          <span class="card-title">With Love</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal1"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.4</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 38m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Mar 15</span>
+          </div>
+          <p class="movie-description">A heartwarming love story set in modern Chennai. Starring Abishan Jeevinth, Anaswara Rajan.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer1"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 2 - Kudumbasthan -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="kk.webp" alt="Kudumbasthan" onerror="this.src='https://via.placeholder.com/300x400?text=Kudumbasthan'">
+          <span class="card-title">Kudumbasthan</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal2"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.7</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 45m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Apr 5</span>
+          </div>
+          <p class="movie-description">A heartwarming family entertainer. Starring Manikandan, Saanve Megghana.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer2"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 3 - My Lord -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="ml.webp" alt="My Lord" onerror="this.src='https://via.placeholder.com/300x400?text=My+Lord'">
+          <span class="card-title">My Lord</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal3"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.2</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 20m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Apr 12</span>
+          </div>
+          <p class="movie-description">A spiritual journey of faith and devotion.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer3"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 4 - Thunderbolts -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="tb.jpg" alt="Thunderbolts" onerror="this.src='https://via.placeholder.com/300x400?text=Thunderbolts'">
+          <span class="card-title">Thunderbolts</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal4"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.9</span>
+            <span class="language-chip">English/Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 50m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>May 2</span>
+          </div>
+          <p class="movie-description">Marvel's new team of unlikely heroes assembles.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer4"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 5 - Parasakthi -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="ps.webp" alt="Parasakthi" onerror="this.src='https://via.placeholder.com/300x400?text=Parasakthi'">
+          <span class="card-title">Parasakthi</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal5"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 9.1</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 55m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Apr 18</span>
+          </div>
+          <p class="movie-description">A classic reimagined for modern times.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer5"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 6 - Jana Nayagan -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="jn.jpg" alt="Jana Nayagan" onerror="this.src='https://via.placeholder.com/300x400?text=Jana+Nayagan'">
+          <span class="card-title">Jana Nayagan</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal6"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.5</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 40m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span style="color: #ffd700;">Apr 25</span>
+          </div>
+          <p class="movie-description">Thalapathy Vijay, Pooja Hegde. Political thriller.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer6"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>PRE-BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 7 - Theeratha Kadhal -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="tk.webp" alt="Theeratha Kadhal" onerror="this.src='https://via.placeholder.com/300x400?text=Theeratha+Kadhal'">
+          <span class="card-title">Theeratha Kadhal</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal7"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.3</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 35m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Mar 28</span>
+          </div>
+          <p class="movie-description">An eternal love story spanning decades.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer7"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 8 - Sirai -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="s.jpg" alt="Sirai" onerror="this.src='https://via.placeholder.com/300x400?text=Sirai'">
+          <span class="card-title">Sirai</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal8"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.1</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 25m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Apr 4</span>
+          </div>
+          <p class="movie-description">A tale of redemption and hope.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer8"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 9 - Dude -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="d.webp" alt="Dude" onerror="this.src='https://via.placeholder.com/300x400?text=Dude'">
+          <span class="card-title">Dude</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal9"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.0</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 15m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Mar 22</span>
+          </div>
+          <p class="movie-description">A fun-filled comedy entertainer.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer9"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 10 - Hotspot 2 Much -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="hot.webp" alt="Hotspot 2 Much" onerror="this.src='https://via.placeholder.com/300x400?text=Hotspot+2+Much'">
+          <span class="card-title">Hotspot 2 Much</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal10"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.3</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 30m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>May 15</span>
+          </div>
+          <p class="movie-description">High-octane action thriller.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer10"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 11 - Bison -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="bi.webp" alt="Bison" onerror="this.src='https://via.placeholder.com/300x400?text=Bison'">
+          <span class="card-title">Bison</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal11"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.6</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 20m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Jun 5</span>
+          </div>
+          <p class="movie-description">Man vs nature drama.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer11"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card 12 - Meiyazhagan -->
+    <div class="col s12 m6 l4 xl3">
+      <div class="card movie-card">
+        <div class="card-image">
+          <img src="my.webp" alt="Meiyazhagan" onerror="this.src='https://via.placeholder.com/300x400?text=Meiyazhagan'">
+          <span class="card-title">Meiyazhagan</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modal12"><i class="material-icons">info_outline</i></a>
+        </div>
+        <div class="card-content">
+          <div class="rating-container">
+            <span class="rating-badge">⭐ 8.8</span>
+            <span class="language-chip">Tamil</span>
+          </div>
+          <div class="movie-meta">
+            <i class="material-icons tiny">access_time</i>
+            <span>2h 50m</span>
+            <i class="material-icons tiny" style="margin-left: 10px;">calendar_today</i>
+            <span>Jun 20</span>
+          </div>
+          <p class="movie-description">Epic historical drama.</p>
+        </div>
+        <div class="card-action">
+          <a class="btn-small trailer-btn modal-trigger" href="#trailer12"><i class="material-icons left">play_arrow</i>TRAILER</a>
+          <a class="btn-small book-btn" href="#book"><i class="material-icons left">confirmation_number</i>BOOK</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="center mt-40">
+    <a href="#!" class="btn-large waves-effect waves-light" style="width: 300px;"><i class="material-icons left">expand_more</i>View All Movies</a>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- FIXED TRAILER MODALS - NO ERROR 153                    -->
+<!-- ===================================================== -->
+<!-- Trailer 1 - With Love -->
+<div id="trailer1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>With Love - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/je1xB5ColOQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <p><strong>Director:</strong> Madhan</p>
+        <p><strong>Cast:</strong> Abishan Jeevinth, Anaswara Rajan</p>
+      </div>
+      <div class="col s12 m6">
+        <p><strong>Music:</strong> Sean Roldan</p>
+        <p><strong>Release:</strong> March 15, 2025</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 2 - Kudumbasthan -->
+<div id="trailer2" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Kudumbasthan - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/qfKpPq87bHQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <p><strong>Director:</strong> Rajeshwar Kalisamy</p>
+        <p><strong>Cast:</strong> Manikandan, Saanve Megghana</p>
+      </div>
+      <div class="col s12 m6">
+        <p><strong>Music:</strong> Vaisagh</p>
+        <p><strong>Release:</strong> April 5, 2025</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 3 - My Lord -->
+<div id="trailer3" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>My Lord - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/KR05JMlq8K8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>A spiritual journey of faith and devotion. Coming to theaters April 12, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 4 - Thunderbolts -->
+<div id="trailer4" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Thunderbolts - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/x52MYc8brac" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>Marvel's new team of unlikely heroes assembles. In theaters May 2, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 5 - Parasakthi -->
+<div id="trailer5" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Parasakthi - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/dXCliyBQnWU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>A classic reimagined for modern times. Releasing April 18, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 6 - Jana Nayagan -->
+<div id="trailer6" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Jana Nayagan - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/fJaAYcERf3Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <p><strong>Director:</strong> H Vinoth</p>
+        <p><strong>Cast:</strong> Thalapathy Vijay, Pooja Hegde</p>
+      </div>
+      <div class="col s12 m6">
+        <p><strong>Music:</strong> Anirudh</p>
+        <p><strong>Release:</strong> April 25, 2025</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">PRE-BOOK</a>
+  </div>
+</div>
+
+<!-- Trailer 7 - Theeratha Kadhal (Fixed - No empty src) -->
+<div id="trailer7" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Theeratha Kadhal - Official Trailer</h4>
+    <div class="video-container" style="display: flex; align-items: center; justify-content: center; background: #1e2438;">
+      <p style="color: #e50914; text-align: center;">Trailer coming soon</p>
+    </div>
+    <p>An eternal love story spanning decades. In theaters March 28, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 8 - Sirai -->
+<div id="trailer8" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Sirai - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/31-NtcyZMzA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>A tale of redemption and hope behind prison bars. Releasing April 4, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 9 - Dude -->
+<div id="trailer9" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Dude - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/39x89Tl1vMI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>A fun-filled comedy entertainer. In theaters March 22, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 10 - Hotspot 2 Much -->
+<div id="trailer10" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Hotspot 2 Much - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/kYl0_97wQ5Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>High-octane action thriller. Coming May 15, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 11 - Bison -->
+<div id="trailer11" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Bison - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/GPwRRVdzkdc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>A powerful drama about man vs nature. Releasing June 5, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- Trailer 12 - Meiyazhagan -->
+<div id="trailer12" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Meiyazhagan - Official Trailer</h4>
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/Ahp840_aCoI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>An epic historical drama from the Chola era. In theaters June 20, 2025.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- MOVIE DETAILS MODALS - 12 MODALS (Abbreviated for space) -->
+<!-- ===================================================== -->
+<!-- Modal 1 - With Love -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>With Love (Tamil)</h4>
+    <div class="row">
+      <div class="col s12 m4">
+        <img src="with%20love.webp" width="100%" onerror="this.src='https://via.placeholder.com/300x400?text=With+Love'">
+      </div>
+      <div class="col s12 m8">
+        <p><strong>Director:</strong> Madhan</p>
+        <p><strong>Cast:</strong> Abishan Jeevinth, Anaswara Rajan</p>
+        <p><strong>Music:</strong> Sean Roldan</p>
+        <p><strong>Language:</strong> Tamil</p>
+        <p><strong>Release:</strong> March 15, 2025</p>
+        <p><strong>Duration:</strong> 2h 38m</p>
+        <p><strong>Synopsis:</strong> A modern love story set in Chennai.</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat">CLOSE</a>
+    <a href="#trailer1" class="modal-close btn grey darken-2">WATCH TRAILER</a>
+    <a href="#book" class="modal-close btn">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- THEATER LOCATIONS SECTION                             -->
+<!-- ===================================================== -->
+<section id="theaters" class="container">
+  <h2 class="section-title">🎬 Our Theaters</h2>
+  <div class="row">
+    <!-- Miraj Cinemas - mi.jpg -->
+    <div class="col s12 m4">
+      <div class="card theater-card">
+        <div class="card-image">
+          <img src="mi.jpg" alt="Miraj Cinemas" onerror="this.src='https://via.placeholder.com/400x200?text=Miraj+Cinemas'">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Miraj Cinemas</span>
+          <p><i class="material-icons tiny">place</i> Anna Salai, Chennai - 600002</p>
+          <p><i class="material-icons tiny">stars</i> 4K Laser | Dolby Atmos | Recliner</p>
+          <div class="location-badge"><i class="material-icons tiny">location_on</i> Chennai Central</div>
+        </div>
+        <div class="card-action">
+          <a href="#book" class="btn-small book-btn" style="width: 100%;">SELECT THEATER</a>
+        </div>
+      </div>
+    </div>
+    <!-- PSS Cinemas - pss.webp -->
+    <div class="col s12 m4">
+      <div class="card theater-card">
+        <div class="card-image">
+          <img src="pss.webp" alt="PSS Cinemas" onerror="this.src='https://via.placeholder.com/400x200?text=PSS+Cinemas'">
+        </div>
+        <div class="card-content">
+          <span class="card-title">PSS Cinemas</span>
+          <p><i class="material-icons tiny">place</i> Brookefields, Coimbatore</p>
+          <p><i class="material-icons tiny">stars</i> 3D | IMAX | Luxury Seats</p>
+          <div class="location-badge"><i class="material-icons tiny">location_on</i> Coimbatore</div>
+        </div>
+        <div class="card-action">
+          <a href="#book" class="btn-small book-btn" style="width: 100%;">SELECT THEATER</a>
+        </div>
+      </div>
+    </div>
+    <!-- PVR Cinemas - pvr.jpeg -->
+    <div class="col s12 m4">
+      <div class="card theater-card">
+        <div class="card-image">
+          <img src="pvr.jpeg" alt="PVR Cinemas" onerror="this.src='https://via.placeholder.com/400x200?text=PVR+Cinemas'">
+        </div>
+        <div class="card-content">
+          <span class="card-title">PVR Cinemas</span>
+          <p><i class="material-icons tiny">place</i> VR Mall, Madurai</p>
+          <p><i class="material-icons tiny">stars</i> D-BOX | 4DX | Gold Class</p>
+          <div class="location-badge"><i class="material-icons tiny">location_on</i> Madurai</div>
+        </div>
+        <div class="card-action">
+          <a href="#book" class="btn-small book-btn" style="width: 100%;">SELECT THEATER</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- TICKET BOOKING FORM WITH SEAT LAYOUT                   -->
+<!-- ===================================================== -->
+<section id="book" class="container">
+  <h2 class="section-title">🎟️ Book Your Tickets</h2>
+  <div class="row">
+    <div class="col s12 l6">
+      <div class="card-panel" style="padding: 30px;">
+        <h4 style="color: #e50914; margin-bottom: 25px;">Booking Details</h4>
+        <form>
+          <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="name" type="text" class="validate" required>
+            <label for="name">Full Name</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate" required>
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">phone</i>
+            <input id="phone" type="tel" class="validate" required>
+            <label for="phone">Phone Number</label>
+          </div>
+          <div class="input-field">
+            <select>
+              <option value="" disabled selected>Select Movie</option>
+              <option value="1">With Love (Tamil) - 2h 38m</option>
+              <option value="2">Kudumbasthan (Tamil) - 2h 45m</option>
+              <option value="3">My Lord (Tamil) - 2h 20m</option>
+              <option value="4">Thunderbolts (English/Tamil) - 2h 50m</option>
+              <option value="5">Parasakthi (Tamil) - 2h 55m</option>
+              <option value="6">Jana Nayagan (Tamil) - 2h 40m</option>
+              <option value="7">Theeratha Kadhal (Tamil) - 2h 35m</option>
+              <option value="8">Sirai (Tamil) - 2h 25m</option>
+              <option value="9">Dude (Tamil) - 2h 15m</option>
+              <option value="10">Hotspot 2 Much (Tamil) - 2h 30m</option>
+              <option value="11">Bison (Tamil) - 2h 20m</option>
+              <option value="12">Meiyazhagan (Tamil) - 2h 50m</option>
+            </select>
+            <label>Select Movie</label>
+          </div>
+          <div class="input-field">
+            <select>
+              <option value="" disabled selected>Select Theater</option>
+              <option value="1">Miraj Cinemas - Chennai</option>
+              <option value="2">PSS Cinemas - Coimbatore</option>
+              <option value="3">PVR Cinemas - Madurai</option>
+            </select>
+            <label>Select Theater</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">date_range</i>
+            <input type="text" class="datepicker" placeholder="Select Date">
+          </div>
+          <div class="input-field">
+            <select>
+              <option value="" disabled selected>Showtime</option>
+              <option value="1">10:30 AM</option>
+              <option value="2">2:00 PM</option>
+              <option value="3">6:30 PM</option>
+              <option value="4">9:45 PM</option>
+            </select>
+            <label>Showtime</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">confirmation_number</i>
+            <input type="number" min="1" max="10" value="2">
+            <label>Number of Tickets</label>
+          </div>
+          <div class="input-field">
+            <select>
+              <option value="" disabled selected>Seat Type</option>
+              <option value="1">Standard - ₹150</option>
+              <option value="2">Premium - ₹250</option>
+              <option value="3">Recliner - ₹400</option>
+            </select>
+            <label>Seat Type</label>
+          </div>
+          <p>
+            <label>
+              <input type="checkbox" class="filled-in" checked="checked" />
+              <span>I accept the terms and conditions</span>
+            </label>
+          </p>
+          <button class="btn-large waves-effect waves-light" type="submit" style="width: 100%;">CONFIRM BOOKING</button>
+        </form>
+      </div>
+    </div>
+    
+    <!-- SEAT LAYOUT -->
+    <div class="col s12 l6">
+      <div class="seat-layout-container">
+        <h4 style="color: #e50914; margin-bottom: 25px;">Select Your Seats</h4>
+        <div class="screen">SCREEN</div>
+        <div class="seat-grid">
+          <!-- Row A -->
+          <div class="seat available">A1</div><div class="seat available">A2</div><div class="seat available">A3</div><div class="seat available">A4</div><div class="seat available">A5</div>
+          <div class="seat booked">A6</div><div class="seat booked">A7</div><div class="seat available">A8</div><div class="seat available">A9</div><div class="seat available">A10</div>
+          <!-- Row B -->
+          <div class="seat available">B1</div><div class="seat available">B2</div><div class="seat available">B3</div><div class="seat available">B4</div><div class="seat booked">B5</div>
+          <div class="seat booked">B6</div><div class="seat available">B7</div><div class="seat available">B8</div><div class="seat available">B9</div><div class="seat available">B10</div>
+          <!-- Row C -->
+          <div class="seat available">C1</div><div class="seat available">C2</div><div class="seat available">C3</div><div class="seat available">C4</div><div class="seat available">C5</div>
+          <div class="seat available">C6</div><div class="seat available">C7</div><div class="seat booked">C8</div><div class="seat booked">C9</div><div class="seat booked">C10</div>
+        </div>
+        <div class="seat-legend">
+          <div class="legend-item"><span class="legend-box available"></span> Available</div>
+          <div class="legend-item"><span class="legend-box selected"></span> Selected</div>
+          <div class="legend-item"><span class="legend-box booked"></span> Booked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- OFFERS SECTION                                        -->
+<!-- ===================================================== -->
+<section id="offers" class="container">
+  <h2 class="section-title">🎁 Exclusive Offers</h2>
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="offer-card">
+        <i class="material-icons">weekend</i>
+        <h5>Weekend Special</h5>
+        <p>Buy 2 tickets, get 1 free</p>
+        <span class="rating-badge" style="background: transparent; border: 1px solid #e50914;">Code: WEEKEND50</span>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="offer-card">
+        <i class="material-icons">school</i>
+        <h5>Student Offer</h5>
+        <p>20% off on all shows</p>
+        <span class="rating-badge" style="background: transparent; border: 1px solid #e50914;">Code: STUDENT20</span>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="offer-card">
+        <i class="material-icons">family_restroom</i>
+        <h5>Family Combo</h5>
+        <p>4 tickets + snacks @ ₹999</p>
+        <span class="rating-badge" style="background: transparent; border: 1px solid #e50914;">Code: FAMILY4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- MOVIES AVAILABLE GALLERY                               -->
+<!-- ===================================================== -->
+<section class="container">
+  <h2 class="section-title">📽️ Movies Available</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="with%20love.webp" alt="With Love" onerror="this.src='https://via.placeholder.com/200x300?text=With+Love'"></div>
+    <div class="gallery-item"><img src="kk.webp" alt="Kudumbasthan" onerror="this.src='https://via.placeholder.com/200x300?text=Kudumbasthan'"></div>
+    <div class="gallery-item"><img src="ml.webp" alt="My Lord" onerror="this.src='https://via.placeholder.com/200x300?text=My+Lord'"></div>
+    <div class="gallery-item"><img src="tb.jpg" alt="Thunderbolts" onerror="this.src='https://via.placeholder.com/200x300?text=Thunderbolts'"></div>
+    <div class="gallery-item"><img src="ps.webp" alt="Parasakthi" onerror="this.src='https://via.placeholder.com/200x300?text=Parasakthi'"></div>
+    <div class="gallery-item"><img src="jn.jpg" alt="Jana Nayagan" onerror="this.src='https://via.placeholder.com/200x300?text=Jana+Nayagan'"></div>
+    <div class="gallery-item"><img src="tk.webp" alt="Theeratha Kadhal" onerror="this.src='https://via.placeholder.com/200x300?text=Theeratha+Kadhal'"></div>
+    <div class="gallery-item"><img src="s.jpg" alt="Sirai" onerror="this.src='https://via.placeholder.com/200x300?text=Sirai'"></div>
+    <div class="gallery-item"><img src="d.webp" alt="Dude" onerror="this.src='https://via.placeholder.com/200x300?text=Dude'"></div>
+    <div class="gallery-item"><img src="hot.webp" alt="Hotspot 2 Much" onerror="this.src='https://via.placeholder.com/200x300?text=Hotspot+2+Much'"></div>
+    <div class="gallery-item"><img src="bi.webp" alt="Bison" onerror="this.src='https://via.placeholder.com/200x300?text=Bison'"></div>
+    <div class="gallery-item"><img src="my.webp" alt="Meiyazhagan" onerror="this.src='https://via.placeholder.com/200x300?text=Meiyazhagan'"></div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- CONTACT SECTION                                       -->
+<!-- ===================================================== -->
+<section id="contact" class="container">
+  <h2 class="section-title">📞 Contact Us</h2>
+  <div class="contact-section">
+    <div class="row">
+      <div class="col s12 l6">
+        <form>
+          <div class="input-field"><i class="material-icons prefix">person</i><input type="text" id="con_name"><label>Your Name</label></div>
+          <div class="input-field"><i class="material-icons prefix">email</i><input type="email" id="con_email"><label>Email</label></div>
+          <div class="input-field"><i class="material-icons prefix">phone</i><input type="tel" id="con_phone"><label>Phone</label></div>
+          <div class="input-field"><i class="material-icons prefix">subject</i><input type="text" id="subject"><label>Subject</label></div>
+          <div class="input-field"><i class="material-icons prefix">message</i><textarea id="message" class="materialize-textarea"></textarea><label>Message</label></div>
+          <button class="btn-large" type="submit" style="width: 100%;">SEND MESSAGE</button>
+        </form>
+      </div>
+      <div class="col s12 l6">
+        <div class="contact-info">
+          <h5>📍 Address</h5>
+          <p>Book Me Multiplex, Anna Salai, Chennai</p>
+          <h5>🕒 Hours</h5>
+          <p>Mon-Sun: 9:00 AM - 12:00 AM</p>
+          <h5>📞 Phone</h5>
+          <p>+91 98765 43210</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- FOOTER                                                -->
+<!-- ===================================================== -->
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="row">
+      <div class="col l4 s12">
+        <h5 class="footer-title">BOOK<span style="color: white;">ME</span></h5>
+        <p>Your premier destination for Tamil cinema.</p>
+      </div>
+      <div class="col l4 s12">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#now-showing">Now Showing</a></li>
+          <li><a href="#theaters">Theaters</a></li>
+          <li><a href="#offers">Offers</a></li>
+        </ul>
+      </div>
+      <div class="col l4 s12">
+        <h5>Newsletter</h5>
+        <input type="email" placeholder="Your Email" class="newsletter-input">
+        <button class="btn-small">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">© 2025 BOOK ME. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- ===================================================== -->
+<!-- SCRIPTS                                               -->
+<!-- ===================================================== -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  $(document).ready(function(){
+    // Initialize components
+    $('.sidenav').sidenav();
+    $('.carousel').carousel({
+      indicators: true,
+      duration: 200
+    });
+    $('.modal').modal();
+    $('select').formSelect();
+    $('.datepicker').datepicker({
+      format: 'dd mmmm yyyy',
+      minDate: new Date()
+    });
+    
+    // Autoplay carousel
+    setInterval(function() {
+      $('.carousel').carousel('next');
+    }, 4000);
+    
+    // Seat selection
+    $('.seat.available').click(function(){
+      $(this).toggleClass('selected');
+    });
+    
+    // Smooth scroll
+    $('a[href^="#"]').click(function(e) {
+      e.preventDefault();
+      var target = $(this).attr('href');
+      if (target !== '#!' && target !== '#') {
+        $('html, body').animate({
+          scrollTop: $(target).offset().top - 80
+        }, 800);
+      }
+    });
+    
+    // Form submission
+    $('form').submit(function(e) {
+      e.preventDefault();
+      M.toast({html: 'Booking confirmed!'});
+    });
+    
+    // Login functions
+    window.showStudentLogin = function() {
+      alert('Student Login - Demo\nEmail: student@bookme.com\nPassword: demo123');
+    };
+    window.showCoachLogin = function() {
+      alert('Coach Login - Demo\nEmail: coach@bookme.com\nPassword: coach123');
+    };
+  });
+</script>
+</body>
+</html>
