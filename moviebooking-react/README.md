@@ -1,6 +1,8 @@
-# React + Vite
+# Movie Booking React
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+
+**Live Demo:** [https://moviebooking-react2026.vercel.app/](https://moviebooking-react2026.vercel.app/)
 
 Currently, two official plugins are available:
 
