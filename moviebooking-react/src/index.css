@@ -235,11 +235,11 @@ body {
 .hero {
   height: 90vh;
   min-height: 650px;
-  background: #0a0f1e;
-  background-image: url('https://images.unsplash.com/photo-1489599849928-6c8e8c7c4b9c?w=1950&q=80');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(229, 9, 20, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(229, 9, 20, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(30, 36, 56, 0.8) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0f1e 0%, #111827 50%, #0a0f1e 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -249,15 +249,34 @@ body {
   overflow: hidden;
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-conic-gradient(
+    rgba(229, 9, 20, 0.03) 0deg 10deg,
+    transparent 10deg 20deg
+  );
+  animation: rotateBg 60s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateBg {
+  to { transform: rotate(360deg); }
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(10,15,30,0.75) 0%, rgba(10,15,30,0.5) 50%, rgba(10,15,30,0.75) 100%);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(229, 9, 20, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(229, 9, 20, 0.06) 0%, transparent 40%);
   z-index: 1;
 }
 
@@ -276,13 +295,16 @@ body {
   position: relative;
   z-index: 2;
   animation: fadeInUp 1.2s ease;
-  background: rgba(10, 15, 30, 0.45);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(229, 9, 20, 0.2);
+  background: rgba(229, 9, 20, 0.12);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 2px solid rgba(229, 9, 20, 0.4);
   border-radius: 30px;
   padding: 50px 60px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(229, 9, 20, 0.05);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 80px rgba(229, 9, 20, 0.15);
   max-width: 700px;
 }
 
